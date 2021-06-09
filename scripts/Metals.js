@@ -24,4 +24,3 @@ export const Metals = () => {
     html += "</ul>"
     return html
 }
-

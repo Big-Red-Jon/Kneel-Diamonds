@@ -25,16 +25,22 @@ const database = {
         { id: 4, metal: "Platinum", price: 795.45 },
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
-    customOrders: [
+    pieces: [
+        { id: 1, item: "ring"},
+        { id: 2, item: "earring"},
+        { id: 3, item: "necklace"}
+    ],
+    orders: [
         {
-            id: 1,
-            metalId: 3,
-            sizeId: 2,
-            styleId: 3,
-            timestamp: 1614659931693
+        id: 1,
+        sizeId: 1,
+        styleId: 1,
+        metalId: 1,
+        pieceId: 1
         }
     ],
-    orderBuilder: {}
+    customOrders: {}
+    
 }
   
 
@@ -50,40 +56,52 @@ export const getStyles = () => {
     return database.styles.map(style => ({...style}))
 }
 
-export const getOrders = () => {
-    return database.customOrders.map(order => ({...order}))
+export const getPieces = () => {
+    return database.pieces.map(piece => ({...piece}))
 }
 
+export const getOrders = () => {
+    return database.orders.map(order => ({...order}))
+}
+// The setMetal,setSize, and setStyle functions build a temporary selection
 export const setMetal = (id) => {
-    database.orderBuilder.metalId = id
+    database.customOrders.metalId = id
 }
 
 export const setSize = (id) => {
-    database.orderBuilder.sizeId = id
+    database.customOrders.sizeId = id
 }
 
 export const setStyle = (id) => {
-    database.orderBuilder.styleId = id
+    database.customOrders.styleId = id
 }
 
+export const setPiece = (id) => {
+    database.customOrders.pieceId = id
+}
+
+// This essentially adds up our price for the diamond purchases.
 export const addCustomOrder = () => {
     // Copy the current state of user choices
-    const newOrder = {...database.orderBuilder}
+    const newOrder = {...database.customOrders}
 
     // Add a new primary key to the object
-    const lastIndex = database.customOrders.length - 1
-    newOrder.id = database.customOrders[lastIndex].id + 1
+    const lastIndex = database.orders.length - 1
+    newOrder.id = database.orders[lastIndex].id + 1
 
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
 
     // Add the new order object to custom orders state
-    database.customOrders.push(newOrder)
+    database.orders.push(newOrder)
 
     // Reset the temporary state for user choices
-    database.orderBuilder = {}
+    database.customeOrders = {}
 
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+// database.entrees.forEach((item, i) => {
+//     item.id = i + 1;
+// })
