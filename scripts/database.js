@@ -122,7 +122,7 @@ export const addCustomOrder = () => {
     )
     const pieceItem = foundPiece.id
 
-    // This loop run through the piece chosen and returns the proper price for each one
+    // This loop runs through the piece chosen and returns the proper price for each one
     const pieceChoice = (piece) => {
         for (piece of database.pieces) {
             if (pieceItem === 1) {
@@ -132,13 +132,13 @@ export const addCustomOrder = () => {
                 return metalPrice * 2 + stylePrice * 2 + sizePrice * 2
             }
             else if (pieceItem === 3) {
-                return metalPrice * 3 + stylePrice * 3 + sizePrice * 3
+                return metalPrice * 4 + stylePrice * 4 + sizePrice * 4
             }
         }
     }
 
     const finalPrice = pieceChoice(pieceItem)
-    // const totalCost = metalPrice + stylePrice + sizePrice
+    
 
     newOrder.price = finalPrice.toLocaleString("en-US", {
         style: "currency",
