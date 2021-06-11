@@ -26,9 +26,9 @@ const database = {
         { id: 5, metal: "Palladium", price: 1241.0 }
     ],
     pieces: [
-        { id: 1, item: "ring" },
-        { id: 2, item: "earring" },
-        { id: 3, item: "necklace" }
+        { id: 1, item: "Ring" },
+        { id: 2, item: "Earring" },
+        { id: 3, item: "Necklace" }
     ],
     orders: [
         {

@@ -37,7 +37,7 @@ export const KneelDiamonds = () => {
         </article>
 
         <article>
-        <section>
+        <section class="piece">
             ${Pieces()}
         </section>
         </article>

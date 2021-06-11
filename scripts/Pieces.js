@@ -12,16 +12,17 @@ document.addEventListener(
 )
 
 export const Pieces = () => {
-    let html = "<ul>"
+    let html = ""
+    // let html = "<ul>"
 
     const listItems = pieces.map(piece => {
-        return `<li>
+        return `
         <input type="radio" name="piece" value="${piece.id}"/> ${piece.item}
-        </li>`
+        `
     })
 
     html += listItems.join("")
 
-    html += "</ul>"
+    // html += "</ul>"
     return html
 }
