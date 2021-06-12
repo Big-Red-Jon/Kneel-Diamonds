@@ -149,7 +149,7 @@ export const addCustomOrder = () => {
     database.orders.push(newOrder)
 
     // Reset the temporary state for user choices
-    database.customeOrders = {}
+    database.customOrders = {}
 
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
